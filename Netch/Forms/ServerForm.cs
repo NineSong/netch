@@ -10,8 +10,8 @@ namespace Netch.Forms;
 [Fody.ConfigureAwait(true)]
 public abstract class ServerForm : Form
 {
-    private const int ControlLineHeight = 28;
-    private const int InputBoxWidth = 294;
+    private const int ControlLineHeight = 42;
+    private const int InputBoxWidth = 441;
 
     private readonly Dictionary<Control, Func<string, bool>> _checkActions = new();
 
@@ -89,7 +89,7 @@ public abstract class ServerForm : Form
 
         var textBox = new TextBox
         {
-            Location = new Point(120, ControlLineHeight * _controlLines),
+            Location = new Point(180, ControlLineHeight * _controlLines),
             Name = $"{name}TextBox",
             Size = new Size(width, 23),
             TextAlign = HorizontalAlignment.Center,
@@ -121,7 +121,7 @@ public abstract class ServerForm : Form
 
         var comboBox = new ComboBox
         {
-            Location = new Point(120, ControlLineHeight * _controlLines),
+            Location = new Point(180, ControlLineHeight * _controlLines),
             Name = $"{name}ComboBox",
             Size = new Size(width, 23),
             DrawMode = DrawMode.OwnerDrawFixed,
@@ -172,9 +172,9 @@ public abstract class ServerForm : Form
         _controlLines++;
         var control = new Button
         {
-            Location = new Point(340, _controlLines * ControlLineHeight + 10),
+            Location = new Point(278, _controlLines * ControlLineHeight + 10),
             Name = "ControlButton",
-            Size = new Size(75, 23),
+            Size = new Size(111, 36),
             Text = "Save",
             UseVisualStyleBackColor = true
         };
@@ -265,25 +265,25 @@ public abstract class ServerForm : Form
         // 
         // PortTextBox
         // 
-        PortTextBox.Location = new Point(358, ControlLineHeight * 2);
+        PortTextBox.Location = new Point(537, ControlLineHeight * 2);
         PortTextBox.Name = "PortTextBox";
-        PortTextBox.Size = new Size(56, 23);
+        PortTextBox.Size = new Size(84, 23);
         PortTextBox.TabIndex = 5;
         PortTextBox.TextAlign = HorizontalAlignment.Center;
         // 
         // AddressTextBox
         // 
-        AddressTextBox.Location = new Point(120, ControlLineHeight * 2);
+        AddressTextBox.Location = new Point(180, ControlLineHeight * 2);
         AddressTextBox.Name = "AddressTextBox";
-        AddressTextBox.Size = new Size(232, 23);
+        AddressTextBox.Size = new Size(336, 23);
         AddressTextBox.TabIndex = 3;
         AddressTextBox.TextAlign = HorizontalAlignment.Center;
         // 
         // RemarkTextBox
         // 
-        RemarkTextBox.Location = new Point(120, ControlLineHeight);
+        RemarkTextBox.Location = new Point(180, ControlLineHeight);
         RemarkTextBox.Name = "RemarkTextBox";
-        RemarkTextBox.Size = new Size(294, 23);
+        RemarkTextBox.Size = new Size(InputBoxWidth, 23);
         RemarkTextBox.TabIndex = 1;
         RemarkTextBox.TextAlign = HorizontalAlignment.Center;
         // 
@@ -299,7 +299,7 @@ public abstract class ServerForm : Form
         // PortLabel
         // 
         PortLabel.AutoSize = true;
-        PortLabel.Location = new Point(351, ControlLineHeight * 2);
+        PortLabel.Location = new Point(521, ControlLineHeight * 2);
         PortLabel.Name = "PortLabel";
         PortLabel.Size = new Size(11, 17);
         PortLabel.TabIndex = 4;
@@ -307,11 +307,11 @@ public abstract class ServerForm : Form
         // 
         // ServerForm
         // 
-        AutoScaleDimensions = new SizeF(96F, 96F);
+        AutoScaleDimensions = new SizeF(144F, 144F);
         AutoScaleMode = AutoScaleMode.Dpi;
         AutoSize = true;
-        AutoSizeMode = AutoSizeMode.GrowAndShrink;
-        ClientSize = new Size(444, 137);
+        //AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        ClientSize = new Size(666, 204);
         Controls.Add(ConfigurationGroupBox);
         Font = new Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point, 134);
         FormBorderStyle = FormBorderStyle.FixedSingle;
