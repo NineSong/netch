@@ -1427,6 +1427,8 @@ public partial class MainForm : Form
         if (sender is not ComboBox cbx)
             return;
 
+        RecordSize();
+
         // 绘制背景颜色
         e.Graphics.FillRectangle(Brushes.White, e.Bounds);
 
