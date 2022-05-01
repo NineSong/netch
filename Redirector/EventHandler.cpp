@@ -8,6 +8,8 @@ extern bool filterTCP;
 extern bool filterUDP;
 extern bool filterDNS;
 
+extern SOCKADDR_IN6 dnsAddr;
+
 extern bool dnsOnly;
 
 extern vector<wstring> bypassList;
@@ -345,7 +347,7 @@ void udpSend(ENDPOINT_ID id, const unsigned char* target, const char* buffer, in
 			UP += length;
 			DNSHandler::CreateHandler(id, (PSOCKADDR_IN6)target, buffer, length, options);
 
-			wcout << "[Redirector][EventHandler][udpSend][" << id << "] H DNS to " << ConvertIP((PSOCKADDR)target) << endl;
+			wcout << "[Redirector][EventHandler][udpSend][" << id << "] H DNS to " << ConvertIP((PSOCKADDR)&dnsAddr) << endl;
 			return;
 		}
 	}
