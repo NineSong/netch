@@ -64,65 +64,66 @@
             this.AddSubscriptionBox.Controls.Add(this.UnselectButton);
             this.AddSubscriptionBox.Controls.Add(this.AddButton);
             this.AddSubscriptionBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddSubscriptionBox.Location = new System.Drawing.Point(8, 248);
+            this.AddSubscriptionBox.Location = new System.Drawing.Point(8, 387);
             this.AddSubscriptionBox.Name = "AddSubscriptionBox";
-            this.AddSubscriptionBox.Size = new System.Drawing.Size(668, 135);
+            this.AddSubscriptionBox.Size = new System.Drawing.Size(1021, 218);
             this.AddSubscriptionBox.TabIndex = 1;
             this.AddSubscriptionBox.TabStop = false;
             // 
             // RemarkLabel
             // 
             this.RemarkLabel.AutoSize = true;
-            this.RemarkLabel.Location = new System.Drawing.Point(11, 19);
+            this.RemarkLabel.Location = new System.Drawing.Point(6, 19);
             this.RemarkLabel.Name = "RemarkLabel";
-            this.RemarkLabel.Size = new System.Drawing.Size(53, 17);
+            this.RemarkLabel.Size = new System.Drawing.Size(76, 24);
             this.RemarkLabel.TabIndex = 1;
             this.RemarkLabel.Text = "Remark";
             // 
             // RemarkTextBox
             // 
-            this.RemarkTextBox.Location = new System.Drawing.Point(109, 16);
+            this.RemarkTextBox.Location = new System.Drawing.Point(121, 16);
             this.RemarkTextBox.Name = "RemarkTextBox";
-            this.RemarkTextBox.Size = new System.Drawing.Size(545, 23);
+            this.RemarkTextBox.Size = new System.Drawing.Size(894, 31);
             this.RemarkTextBox.TabIndex = 2;
             // 
             // LinkLabel
             // 
             this.LinkLabel.AutoSize = true;
-            this.LinkLabel.Location = new System.Drawing.Point(11, 48);
+            this.LinkLabel.Location = new System.Drawing.Point(6, 66);
             this.LinkLabel.Name = "LinkLabel";
-            this.LinkLabel.Size = new System.Drawing.Size(31, 17);
+            this.LinkLabel.Size = new System.Drawing.Size(45, 24);
             this.LinkLabel.TabIndex = 3;
             this.LinkLabel.Text = "Link";
             // 
             // LinkTextBox
             // 
-            this.LinkTextBox.Location = new System.Drawing.Point(109, 45);
+            this.LinkTextBox.Location = new System.Drawing.Point(121, 63);
             this.LinkTextBox.Name = "LinkTextBox";
-            this.LinkTextBox.Size = new System.Drawing.Size(545, 23);
+            this.LinkTextBox.Size = new System.Drawing.Size(894, 31);
             this.LinkTextBox.TabIndex = 4;
             // 
             // UserAgentLabel
             // 
             this.UserAgentLabel.AutoSize = true;
-            this.UserAgentLabel.Location = new System.Drawing.Point(11, 77);
+            this.UserAgentLabel.Location = new System.Drawing.Point(6, 114);
             this.UserAgentLabel.Name = "UserAgentLabel";
-            this.UserAgentLabel.Size = new System.Drawing.Size(74, 17);
+            this.UserAgentLabel.Size = new System.Drawing.Size(109, 24);
             this.UserAgentLabel.TabIndex = 5;
             this.UserAgentLabel.Text = "User-Agent";
             // 
             // UserAgentTextBox
             // 
-            this.UserAgentTextBox.Location = new System.Drawing.Point(109, 74);
+            this.UserAgentTextBox.Location = new System.Drawing.Point(121, 111);
             this.UserAgentTextBox.Name = "UserAgentTextBox";
-            this.UserAgentTextBox.Size = new System.Drawing.Size(545, 23);
+            this.UserAgentTextBox.Size = new System.Drawing.Size(894, 31);
             this.UserAgentTextBox.TabIndex = 6;
             // 
             // UnselectButton
             // 
-            this.UnselectButton.Location = new System.Drawing.Point(448, 103);
+            this.UnselectButton.AutoSize = true;
+            this.UnselectButton.Location = new System.Drawing.Point(811, 158);
             this.UnselectButton.Name = "UnselectButton";
-            this.UnselectButton.Size = new System.Drawing.Size(87, 26);
+            this.UnselectButton.Size = new System.Drawing.Size(100, 40);
             this.UnselectButton.TabIndex = 7;
             this.UnselectButton.Text = "Unselect";
             this.UnselectButton.UseVisualStyleBackColor = true;
@@ -130,9 +131,10 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(541, 103);
+            this.AddButton.AutoSize = true;
+            this.AddButton.Location = new System.Drawing.Point(917, 158);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(113, 26);
+            this.AddButton.Size = new System.Drawing.Size(100, 40);
             this.AddButton.TabIndex = 7;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -149,11 +151,10 @@
             this.UserAgentHeader});
             this.SubscriptionLinkListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SubscriptionLinkListView.FullRowSelect = true;
-            this.SubscriptionLinkListView.HideSelection = false;
             this.SubscriptionLinkListView.Location = new System.Drawing.Point(8, 8);
             this.SubscriptionLinkListView.MultiSelect = false;
             this.SubscriptionLinkListView.Name = "SubscriptionLinkListView";
-            this.SubscriptionLinkListView.Size = new System.Drawing.Size(668, 234);
+            this.SubscriptionLinkListView.Size = new System.Drawing.Size(1021, 373);
             this.SubscriptionLinkListView.TabIndex = 0;
             this.SubscriptionLinkListView.UseCompatibleStateImageBehavior = false;
             this.SubscriptionLinkListView.View = System.Windows.Forms.View.Details;
@@ -164,6 +165,7 @@
             // EnableColumnHeader
             // 
             this.EnableColumnHeader.Text = "Status";
+            this.EnableColumnHeader.Width = 120;
             // 
             // RemarkColumnHeader
             // 
@@ -182,31 +184,32 @@
             // 
             // pContextMenuStrip
             // 
+            this.pContextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.pContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DeleteToolStripMenuItem,
             this.DeleteServersToolStripMenuItem,
             this.CopyLinkToolStripMenuItem});
             this.pContextMenuStrip.Name = "pContextMenuStrip";
-            this.pContextMenuStrip.Size = new System.Drawing.Size(161, 70);
+            this.pContextMenuStrip.Size = new System.Drawing.Size(203, 94);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(202, 30);
             this.DeleteToolStripMenuItem.Text = "Delete";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // DeleteServersToolStripMenuItem
             // 
             this.DeleteServersToolStripMenuItem.Name = "DeleteServersToolStripMenuItem";
-            this.DeleteServersToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.DeleteServersToolStripMenuItem.Size = new System.Drawing.Size(202, 30);
             this.DeleteServersToolStripMenuItem.Text = "Delete Servers";
             this.DeleteServersToolStripMenuItem.Click += new System.EventHandler(this.DeleteServersToolStripMenuItem_Click);
             // 
             // CopyLinkToolStripMenuItem
             // 
             this.CopyLinkToolStripMenuItem.Name = "CopyLinkToolStripMenuItem";
-            this.CopyLinkToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.CopyLinkToolStripMenuItem.Size = new System.Drawing.Size(202, 30);
             this.CopyLinkToolStripMenuItem.Text = "Copy link";
             this.CopyLinkToolStripMenuItem.Click += new System.EventHandler(this.CopyLinkToolStripMenuItem_Click);
             // 
@@ -224,14 +227,14 @@
             this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.99213F));
             this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.00787F));
             this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.MainTableLayoutPanel.Size = new System.Drawing.Size(684, 391);
+            this.MainTableLayoutPanel.Size = new System.Drawing.Size(1037, 613);
             this.MainTableLayoutPanel.TabIndex = 11;
             // 
             // SubscriptionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(684, 391);
+            this.ClientSize = new System.Drawing.Size(1037, 613);
             this.Controls.Add(this.MainTableLayoutPanel);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
