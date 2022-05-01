@@ -10,43 +10,33 @@ SOCKADDR_IN6 dnsAddr;
 
 void HandleClientDNS(ENDPOINT_ID id, PSOCKADDR_IN6 target, char* packet, int length, PNF_UDP_OPTIONS option)
 {
-	auto remote = socket(AF_INET6, SOCK_DGRAM, IPPROTO_UDP);
+	SOCKET remote = socket(dnsAddr.sin6_family == AF_INET ? AF_INET: AF_INET6, SOCK_DGRAM, IPPROTO_UDP);
 	if (remote != INVALID_SOCKET)
 	{
-		int v6only = 0;
-
-		if (setsockopt(remote, IPPROTO_IPV6, IPV6_V6ONLY, (char*)&v6only, sizeof(v6only)) != SOCKET_ERROR)
+		if (sendto(remote, packet, length, 0, (PSOCKADDR)&dnsAddr, (dnsAddr.sin6_family == AF_INET) ? sizeof(SOCKADDR_IN) : sizeof(SOCKADDR_IN6)) == length)
 		{
-			SOCKADDR_IN6 addr;
-			IN6ADDR_SETANY(&addr);
+			timeval timeout{};
+			timeout.tv_sec = 4;
 
-			if (bind(remote, (PSOCKADDR)&addr, sizeof(SOCKADDR_IN6)) != SOCKET_ERROR)
+			fd_set fds;
+			FD_ZERO(&fds);
+			FD_SET(remote, &fds);
+
+			int size = select(NULL, &fds, NULL, NULL, &timeout);
+			if (size != 0 && size != SOCKET_ERROR)
 			{
-				if (sendto(remote, packet, length, 0, (PSOCKADDR)&dnsAddr, (dnsAddr.sin6_family == AF_INET ? sizeof(SOCKADDR_IN) : sizeof(SOCKADDR_IN6))) == length)
-				{
-					timeval timeout{};
-					timeout.tv_sec = 4;
+				char buffer[1024];
 
-					fd_set fds;
-					FD_ZERO(&fds);
-					FD_SET(remote, &fds);
-
-					int size = select(NULL, &fds, NULL, NULL, &timeout);
-					if (size != 0 && size != SOCKET_ERROR)
-					{
-						char buffer[1024];
-
-						size = recvfrom(remote, buffer, sizeof(buffer), 0, NULL, NULL);
-						if (size != 0 && size != SOCKET_ERROR)
-							nf_udpPostReceive(id, (PBYTE)target, buffer, size, option);
-					}
-				}
+				size = recvfrom(remote, buffer, sizeof(buffer), 0, NULL, NULL);
+				if (size != 0 && size != SOCKET_ERROR)
+					nf_udpPostReceive(id, (PBYTE)target, buffer, size, option);
 			}
 		}
-	}
+		else
+			cout << "[Redirector][DNSHandler][HandleClientDNS] Send DNS query failed: " << WSAGetLastError() << endl;
 
-	if (remote != INVALID_SOCKET)
-		closesocket(remote);
+        closesocket(remote);
+	}
 
 	delete target;
 	delete[] packet;
@@ -92,7 +82,7 @@ bool DNSHandler::INIT()
 		return true;
 	}
 
-	auto ipv6 = (PSOCKADDR_IN6)&dnsAddr;
+	auto ipv6 = &dnsAddr;
 	if (inet_pton(AF_INET6, dnsHost.c_str(), &ipv6->sin6_addr) == 1)
 	{
 		ipv6->sin6_family = AF_INET6;
