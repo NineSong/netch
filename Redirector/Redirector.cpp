@@ -269,6 +269,22 @@ extern "C" {
 			inet_pton(AF_INET, "255.254.0.0", rule.remoteIpAddressMask);
 			rule.filteringFlag = NF_ALLOW;
 			nf_addRule(&rule, FALSE);
+
+			/* fe00::/10 (IPv6 Link-local) */
+			memset(&rule, 0, sizeof(NF_RULE));
+			rule.ip_family = AF_INET6;
+			inet_pton(AF_INET6, "fe80::", rule.remoteIpAddress);
+			inet_pton(AF_INET6, "ffc0::", rule.remoteIpAddressMask);
+			rule.filteringFlag = NF_ALLOW;
+			nf_addRule(&rule, FALSE);
+
+			/* fc00::/7 (IPv6 Unique-local) */
+			memset(&rule, 0, sizeof(NF_RULE));
+			rule.ip_family = AF_INET6;
+			inet_pton(AF_INET6, "fc00::", rule.remoteIpAddress);
+			inet_pton(AF_INET6, "fe00::", rule.remoteIpAddressMask);
+			rule.filteringFlag = NF_ALLOW;
+			nf_addRule(&rule, FALSE);
 		}
 
 		if (filterICMP)
